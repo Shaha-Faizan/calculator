@@ -26,6 +26,12 @@ document.querySelectorAll('.button').forEach((button) => {
                 expression = '-' + expression; // Add a negative sign
             }
             display.value = expression;
+        } else if (buttonValue === 'X') {
+            expression += '*'; // Use * for multiplication
+            display.value = expression;
+        } else if (buttonValue === '−') {
+            expression += '-'; // Use - for subtraction
+            display.value = expression;
         } else if (isOperator(buttonValue)) {
             if (!isOperator(expression.slice(-1))) { // Check if last character is not an operator
                 expression += buttonValue;
