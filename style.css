@@ -4,17 +4,17 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #d1dde9;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
 
-h1{
-    color: #e3e7f1;
+h1 {
+    color: #333;
 }
 
 .calculator {
-    background-color: #333;
+    background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,16 +22,39 @@ h1{
     width: 300px;
 }
 
+.result {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 24px;
+    text-align: right;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.result input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    text-align: inherit;
+}
+
 .input {
-    width: calc(100% - 10px);
+    width: 100%;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 24px;
     text-align: right;
-    background-color: #444;
+    background-color: #f9f9f9;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: #333;
+    box-sizing: border-box;
 }
 
 .button {
@@ -41,14 +64,14 @@ h1{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #666;
+    background-color: #333;
     color: #fff;
     transition: background-color 0.3s;
     width: 50px;
 }
 
 .button:hover {
-    background-color: #888;
+    background-color: #444;
 }
 
 .equal {
@@ -59,23 +82,40 @@ h1{
     background-color: #f15f5f;
 }
 
-.clear {
+.clear, .cut {
     background-color: #e3e7f1;
     color: #333;
-     text-align: center;
-     padding: 15px 15px
+    padding:15px;
 }
 
 .cut {
-    background-color: #e3e7f1;
-    color: #333;
-    font-size : 20px;
+    font-size: 20px;
+    padding:15px;
+}
+
+.input:focus, .result-input:focus {
+    outline: none;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+.calculator button {
+    grid-column: span 1;
+}
+
+
+    .button.sign {
+        padding:15px 5px;
+    background-color: #f15f5f; /* Use a color that contrasts well with the background */
+    color: #fff; /* Text color */
+
    
 }
-.sign-change {
-    background-color: #e3e7f1;
-    color: #333;
-    padding: 15px 1px;
+.multi{
+    font-size:25px;
+    padding:8px;
 }
-
-
