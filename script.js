@@ -1,49 +1,52 @@
-const display = document.getElementById('display');
-let expression = "";
+const expressionInput = document.getElementById('expression');
+const resultInput = document.getElementById('result');
+let lastInputWasOperator = false;
 
 document.querySelectorAll('.button').forEach((button) => {
     button.addEventListener('click', () => {
-        const buttonValue = button.innerHTML;
-        
+        let buttonValue = button.innerHTML;
+
+        // Replace × with * and − with -
+        buttonValue = buttonValue.replace('×', '*').replace('−', '-');
+
         if (buttonValue === '=') {
             try {
-                expression = eval(expression);
-                display.value = expression;
+                const expression = expressionInput.value.replace(/×/g, '*').replace(/−/g, '-');
+                const result = eval(expression);
+                resultInput.value = result;
             } catch (error) {
-                display.value = 'Error';
-                expression = "";
+                resultInput.value = 'Error';
             }
         } else if (buttonValue === 'AC') {
-            expression = "";
-            display.value = "";
-        } else if (buttonValue === '←') { // ← represents the cut button
-            expression = expression.slice(0, -1); // Remove the last character
-            display.value = expression;
+            expressionInput.value = '';
+            resultInput.value = '';
+            lastInputWasOperator = false;
+        } else if (buttonValue === '←') {
+            expressionInput.value = expressionInput.value.slice(0, -1);
         } else if (buttonValue === '+/-') {
-            if (expression.startsWith('-')) {
-                expression = expression.slice(1); // Remove the negative sign
+            if (expressionInput.value.startsWith('-')) {
+                expressionInput.value = expressionInput.value.slice(1);
             } else {
-                expression = '-' + expression; // Add a negative sign
+                expressionInput.value = '-' + expressionInput.value;
             }
-            display.value = expression;
-        } else if (buttonValue === 'X') {
-            expression += '*'; // Use * for multiplication
-            display.value = expression;
-        } else if (buttonValue === '−') {
-            expression += '-'; // Use - for subtraction
-            display.value = expression;
         } else if (isOperator(buttonValue)) {
-            if (!isOperator(expression.slice(-1))) { // Check if last character is not an operator
-                expression += buttonValue;
-                display.value = expression;
+            if (!lastInputWasOperator) {
+                const lastChar = expressionInput.value.slice(-1);
+                if (!isOperator(lastChar)) {
+                    expressionInput.value += buttonValue;
+                    lastInputWasOperator = true;
+                } else if (buttonValue !== lastChar) {
+                    // Replace the last operator with the new one if they are different
+                    expressionInput.value = expressionInput.value.slice(0, -1) + buttonValue;
+                }
             }
         } else {
-            expression += buttonValue;
-            display.value = expression;
+            expressionInput.value += buttonValue;
+            lastInputWasOperator = false;
         }
     });
 });
 
 function isOperator(value) {
-    return ['+', '-', '*', '/', '%'].includes(value);
+    return ['+', '-', '*', '/', '%', '×', '−'].includes(value);
 }
