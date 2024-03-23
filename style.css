@@ -14,7 +14,7 @@ h1 {
 }
 
 .calculator {
-    background-color: #fff;
+    background-color: #a2bdbe;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,6 +118,9 @@ h1 {
 .multi{
     font-size:25px;
     padding:8px;
+}
+.sign{
+    padding: 15px;
 }
 
 
