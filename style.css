@@ -119,3 +119,30 @@ h1 {
     font-size:25px;
     padding:8px;
 }
+
+@media (max-width: 767px) {
+    .calculator {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .cut {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .button.sign {
+    padding: 15px 20px;
+    background-color: #f15f5f;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the content vertically */
+    margin: 5px; /* Add margin to create gaps between buttons */
+}
